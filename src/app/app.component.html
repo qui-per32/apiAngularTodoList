@@ -1,13 +1,9 @@
 <header class="addList">
-  <input type="text">
-  <button>add new list</button>
+  <input type="text" [(ngModel)]="addListText" (keyup.enter)="onSaveNewList()">
+  <button (click)="onSaveNewList()">add new list</button>
 </header>
 <section>
   <div class="lists">
-    <!-- <pre>
-      {{lists | json}}
-    </pre> -->
-    <list [data]="list" *ngFor="let list of lists"></list>
+     <list [data]="list" *ngFor="let list of lists" ></list>
   </div>
 </section>
-
