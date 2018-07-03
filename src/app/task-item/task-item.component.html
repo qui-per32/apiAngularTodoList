@@ -1,7 +1,10 @@
 <div class="taskItem {{data.completed ? 'completed' : ''}}"
-     id="{{data.taskId}}">
+ id="{{data.taskId}}" [style.borderColor]="data.color">
     <button (click)="onRemoveTask()">X</button>
-    <div class="taskText">
+<input type="checkbox" [(ngModel)]="data.completed" (change)="onCompleted()"/>
+<span (colorPickerClose)="onColorPicker()" class="colorPicker" [(colorPicker)]="data.color" [style.background]="data.color"></span>
+<div class="taskText" (click)="editText()" *ngIf="!editing">
         {{data.text}}
     </div>
+    <input *ngIf="editing" [(ngModel)]= "data.text" (keyup.enter)="saveText()"/>
 </div>

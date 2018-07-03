@@ -2,13 +2,24 @@
     display: flex;
     flex-direction: row;
     padding: 10px 0;
+    border-right-style: solid;
+    border-right-width: 4px;
 }
 
 .taskItem button {
-    margin-right: 10px
+    margin-right: 10px;
 }
 .completed  {
     opacity: 0.6;
     color: grey;
     text-decoration: line-through;
+}
+
+.colorPicker{
+    display: inline-block;
+    width: 1em;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    height: 1em;
+    border: 1px solid black;
 }
