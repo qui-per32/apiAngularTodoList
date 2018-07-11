@@ -1,10 +1,16 @@
-<div class="taskItem {{data.completed ? 'completed' : ''}}"
- id="{{data.taskId}}" [style.borderColor]="data.color">
-    <button (click)="onRemoveTask()">X</button>
-<input type="checkbox" [(ngModel)]="data.completed" (change)="onCompleted()"/>
-<span (colorPickerClose)="onColorPicker()" class="colorPicker" [(colorPicker)]="data.color" [style.background]="data.color"></span>
-<div class="taskText" (click)="editText()" *ngIf="!editing">
-        {{data.text}}
-    </div>
-    <input *ngIf="editing" [(ngModel)]= "data.text" (keyup.enter)="saveText()"/>
+<div class="taskItem " id="{{data.taskId}}" [style.borderColor]="data.color">
+  <button (click)="onRemoveTask()">X</button>
+  <input type="checkbox" [(ngModel)]="data.completed" (change)="onCompleted()">
+  <span [(colorPicker)]="data.color" class="colorPicker" 
+    [style.background]="data.color" (colorPickerChange)="dataService.save()"
+    [cpPresetColors]="['#0033FF', '#ff6347', '#FF00CC', '#adff2f', '#fff', '#000']" 
+    [cpPresetLabel]="''"></span>
+  <div class="taskText {{data.completed ? 'completed' : ''}}" 
+  [hidden]="editing" (click)="startEdit(editBox)">
+    {{data.text}}
+  </div>
+  <input [hidden]="!editing" #editBox 
+  [(ngModel)]="data.text" (keyup.enter)="finishEdit()" (blur)="finishEdit()">
+
+
 </div>

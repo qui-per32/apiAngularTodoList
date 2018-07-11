@@ -1,6 +1,16 @@
 .list {
-    width: 250px;
-    margin: 10px;
-    background: white;
-    padding: 20px;
+  width: 250px;
+  margin: 10px;
+  background: white;
+  padding: 20px;
+}
+
+.addTask {
+  display: flex;
+  justify-content: space-between;
+}
+
+.drop-over-active {
+  border: dashed 1px black;
+  background-color: lightgreen;
 }

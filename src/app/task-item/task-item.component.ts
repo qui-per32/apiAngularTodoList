@@ -1,7 +1,6 @@
 import { Component, OnChanges, Input } from '@angular/core';
 import {Task} from '../task.interface';
 import {DataService} from '../data.service';
-import { ColorPickerModule } from 'ngx-color-picker';
 @Component({
   selector: 'task-item',
   templateUrl: './task-item.component.html',
@@ -33,6 +32,22 @@ export class TaskItemComponent implements OnChanges {
 
   onCompleted(){
     this.dataService.save();
+  }
+
+  startEdit(input) {
+    this.editing = true;
+    setTimeout(() => {
+      input.focus();
+    }, 0)
+
+  }
+  finishEdit() {
+    setTimeout(()=>{
+
+      this.editing = false;
+      this.dataService.save();
+    }, 300)
+    
   }
 
   onColorPicker(){
